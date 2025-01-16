@@ -5,9 +5,9 @@ public class Product {
     private long id;
     private String name;
     private String category;
-    private double price;
+    private static int price;
 
-    public Product(long id, String name, String category, double price) {
+    public Product(long id, String name, String category, int price) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -38,11 +38,11 @@ public class Product {
         this.category = category;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -55,4 +55,5 @@ public class Product {
                 ", price=" + price +
                 '}';
     }
+
 }
