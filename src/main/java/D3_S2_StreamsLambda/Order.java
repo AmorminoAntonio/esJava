@@ -5,83 +5,94 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private long id;
-    private String status;
-    private LocalDate orderDate;
-    private LocalDate deliveryDate;
-    private List<Product> products;
-    private Customer customer;
+  private long id;
+  private String status;
+  private LocalDate orderDate;
+  private LocalDate deliveryDate;
+  private List<Product> products;
+  private Customer customer;
 
-    public Order(long id, Customer customer) {
-        this.id = id;
-        this.status = "In preparazione...";
-        this.orderDate = LocalDate.now();
-        this.deliveryDate = LocalDate.now().plusDays(3);
-        this.products = new ArrayList<Product>();
-        this.customer = customer;
-    }
+  public Order(long id, Customer customer) {
+    this.id = id;
+    this.status = "In preparazione...";
+    this.orderDate = LocalDate.now();
+    this.deliveryDate = LocalDate.now().plusDays(3);
+    this.products = new ArrayList<Product>();
+    this.customer = customer;
+  }
 
-    public void addProduct(Product p) {
-        this.products.add(p);
-    }
+  public void addProduct(Product p) {
+    this.products.add(p);
+  }
 
-    public long getId() {
-        return id;
-    }
+  public double getTotal() {
+    return this.products.stream().mapToDouble(Product::getPrice).sum();
+  }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public String getStatus() {
-        return status;
-    }
+  public void setId(long id) {
+    this.id = id;
+  }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+  public String getStatus() {
+    return status;
+  }
 
-    public LocalDate getOrderDate() {
-        return orderDate;
-    }
+  public void setStatus(String status) {
+    this.status = status;
+  }
 
-    public void setOrderDate(LocalDate orderDate) {
-        this.orderDate = orderDate;
-    }
+  public LocalDate getOrderDate() {
+    return orderDate;
+  }
 
-    public LocalDate getDeliveryDate() {
-        return deliveryDate;
-    }
+  public void setOrderDate(LocalDate orderDate) {
+    this.orderDate = orderDate;
+  }
 
-    public void setDeliveryDate(LocalDate deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
+  public LocalDate getDeliveryDate() {
+    return deliveryDate;
+  }
 
-    public List<Product> getProducts() {
-        return products;
-    }
+  public void setDeliveryDate(LocalDate deliveryDate) {
+    this.deliveryDate = deliveryDate;
+  }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
+  public List<Product> getProducts() {
+    return products;
+  }
 
-    public Customer getCustomer() {
-        return customer;
-    }
+  public void setProducts(List<Product> products) {
+    this.products = products;
+  }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+  public Customer getCustomer() {
+    return customer;
+  }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", status='" + status + '\'' +
-                ", orderDate=" + orderDate +
-                ", deliveryDate=" + deliveryDate +
-                ", products=" + products +
-                ", customer=" + customer +
-                '}';
-    }
+  public void setCustomer(Customer customer) {
+    this.customer = customer;
+  }
+
+  @Override
+  public String toString() {
+    return "Order{"
+        + "id="
+        + id
+        + ", status='"
+        + status
+        + '\''
+        + ", orderDate="
+        + orderDate
+        + ", deliveryDate="
+        + deliveryDate
+        + ", products="
+        + products
+        + ", customer="
+        + customer
+        + '}';
+  }
 }
